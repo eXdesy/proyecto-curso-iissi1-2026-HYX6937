@@ -109,16 +109,40 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 #### R.F.09.
 #### 4.1.1. Requisitos de información
 
-##### R.I.01. Título requisito de información
+##### R.I.01. Consulta de información de la parada
 
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+Como pasajero quiero consultar los datos detallados de una parada específica (nombre, ubicación, líneas que la utilizan y tiempos de llegada estimados por línea) para saber cuándo llegará mi autobús y planificar mi tiempo de espera.
 
 **Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- ...
+- Comprobar que, al introducir el número o nombre de la parada en el buscador, se muestran todas las líneas operativas que pasan por ella.
+- Comprobar que para cada línea se muestra el tiempo estimado de llegada de los dos próximos autobuses.
+- Se debe aplicar la regla de negocio RN.02 : Verificar que si un autobús en camino tiene su aforo al máximo, no se muestra su tiempo de llegada o se indica visualmente que está "Completo".
+
+#### R.I.02. Información del estado de ocupación del autobús
+
+Como pasajero quiero visualizar el aforo actual del autobús que se dirige a mi parada para decidir si espero a ese vehículo o busco una alternativa si está muy lleno.
+
+**Prueba de aceptación**
+- Comprobar que junto al tiempo de llegada de cada autobús en la pantalla de la parada, se muestra un indicador con su ocupación.
+- Comprobar que el sistema actualiza este aforo en tiempo real tras cada parada realizada por el vehículo.
+- Se debe aplicar la regla de negocio RN.04: Verificar que el número de pasajeros mostrados nunca es menor que cero.
+
+#### R.I.03. Información del Bonobús Virtual
+
+Como pasajero quiero ver los datos de mi título de transporte digital (tipo de abono, saldo disponible y estado) para comprobar si tengo fondos suficientes antes de subir al autobús e intentar validar mi viaje.
+
+**Prueba de aceptación**
+- Comprobar que al abrir la sección de pagos o bonobús en la aplicación, se muestra el saldo en euros actualizado, reflejando los pagos anteriores.
+- Se debe aplicar la regla de negocio RN.03: Verificar que el sistema no permite que el saldo mostrado supere los 50€.
+- Se debe aplicar la regla de negocio RN.05: Comprobar que, si la tarjeta ha sido bloqueada, el estado mostrado es "Bloqueado" y no "Activo".
+
+#### R.I.04. Historial de validaciones y transbordos
+
+Como pasajero quiero visualizar un registro de mis viajes recientes (fecha, hora, línea, importe pagado y si se aplicó descuento por transbordo) para llevar un control personal de mis gastos en transporte.
+
+**Prueba de aceptación**
+- Comprobar que tras validar el billete, el nuevo viaje aparece en la lista del historial.
+- Se debe aplicar la regla de negocio RN.06 y RN.07: Verificar que si el viaje se realiza en menos de 1 hora respecto al anterior y con el mismo bonobús, el historial muestra correctamente la aplicación del descuento en el importe.
 
 #### 4.1.2. Reglas de negocio
 
@@ -131,11 +155,11 @@ Si el número de validaciones menos el número de bajadas iguala la capacidad m�
 ##### RN.03. Límite de saldo:
 El saldo máximo acumulable en un bonobús virtual recargable no podrá superar los 50€.
 
-##### RN.04. 
-Aforo lógico: El número actual de pasajeros a bordo de un autobús nunca puede ser un valor negativo.
+##### RN.04. Aforo lógico: 
+El número actual de pasajeros a bordo de un autobús nunca puede ser un valor negativo.
 
-##### RN.05. 
-Bloqueo antifraude: Si el sistema registra más de tres validaciones consecutivas del mismo título de transporte en la misma máquina en menos de 2 minutos, el bonobús virtual se bloqueará temporalmente.
+##### RN.05. Bloqueo antifraude: 
+Si el sistema registra más de cinco validaciones consecutivas del mismo título de transporte en la misma máquina en menos de 2 minutos, el bonobús virtual se bloqueará temporalmente.
 
 ##### RN.06. Descuento en el trasbordo:
 Para que se efectúe el descuento en el trasbordo tienes que haber utilizado el pago con el mismo bonobus o tarjeta.
