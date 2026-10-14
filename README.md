@@ -68,9 +68,23 @@ para [razón]
 
 #### 4.1.2. Reglas de negocio
 
-##### R.N.01. Título regla negocio
+##### RN.01. Saldo suficiente: 
+Para que una validación NFC sea exitosa, el saldo del bonobús virtual debe ser igual o superior al coste de la tarifa vigente
 
-Descripción de la regla de negocio.
+##### RN.02. Autobús completo:
+Si el número de validaciones menos el número de bajadas iguala la capacidad máxima del autobús, el estado de ocupación pasará automáticamente a "Completo" y se ocultará el tiempo de llegada para los usuarios de la siguiente parada.
+
+##### RN.03. Límite de saldo:
+El saldo máximo acumulable en un bonobús virtual recargable no podrá superar los 50€.
+
+##### RN.04. 
+Aforo lógico: El número actual de pasajeros a bordo de un autobús nunca puede ser un valor negativo.
+
+##### RN.05. 
+Bloqueo antifraude: Si el sistema registra más de tres validaciones consecutivas del mismo título de transporte en la misma máquina en menos de 2 minutos, el bonobús virtual se bloqueará temporalmente.
+
+
+
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
