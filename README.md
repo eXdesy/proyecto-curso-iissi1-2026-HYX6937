@@ -59,11 +59,13 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 
 - Administrador del sistema: gestiona los usuarios y los parámetros generales del sistema, así como la configuración necesaria para su correcto funcionamiento.
 
+- Conductor del bus: lleva el bus y notifica de retrasos o incidencias.
+
 ## 4. Catálogo de requisitos
 
 ### 4.1. Requisitos funcionales
 #### R.F.01. Ubicación
--Como usuario quiero que la aplicación me informe de la ubicación exacta del autobús para calcular mejor el tiempo de espera en la parada.
+-Como usuario quiero que la aplicación me informe de la última parada que haya pasado el bus del autobús para calcular mejor el tiempo de espera en la parada.
 
 **Prueba de aceptación**
 - Descripción de la primera comprobación a realizar
@@ -101,12 +103,63 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 
 **Pruebas de aceptación**
 
-#### R.F.08. Trasbordo
--Como usuario quiero que se me aplique un descuento si me subo en 2 autobuses consecutivos para evitar ahorrar en mis viajes.
+#### R.F.08. Pagos con bonos
+-Como personal de gestión quiero que le reste el dinero correspondiente al viaje al bono.
 
 **Pruebas de aceptación**
 
-#### R.F.09.
+#### R.F.09. Trasbordo
+-Como usuario quiero que se me aplique un descuento si me subo en 2 autobuses consecutivos para poder ahorrar en mis viajes.
+
+**Pruebas de aceptación**
+
+#### R.F.10. Tráfico denso o averías
+-Como usuario quiero que la aplicación me notifique en caso de retraso por tráfico o por algún tipo de avería para poder tomar medidas a la hora de llegar a mi destino.
+
+**Pruebas de aceptación**
+
+#### R.F.11. Previsión de llegada
+-Como usuario quiero que la aplicación me prevea el tiempo medio que tarda el bus en llegar a la parada que escoja para poder saber mi hora de llegada.
+
+**Pruebas de aceptación**
+
+#### R.F.12. Recarga de bonobús
+-Como usuario quiero poder recargar el saldo de mi bonobús virtual directamente desde la app mediante tarjeta de crédito/débito, Apple Pay o Google Pay.
+
+**Pruebas de aceptación**
+
+#### R.F.13. Paradas y líneas favoritas
+-Como usuario quiero poder escoger mis paradas y líneas habituales como favoritas para que me sea más rápido acceder a ellas.
+
+**Pruebas de aceptación**
+
+#### R.F.14. Cambio por eventos
+-Como administrador quiero poder cambiar las rutas de las líneas de los buses para no tener que cancelar líneas por cortes de carretera.
+
+**Pruebas de aceptación**
+
+
+#### R.F.15. Historial de velocidad en hora punta
+
+-Como sistema de gestión quiero calcular los tiempos de espera basándome en la velocidad media histórica de ese tramo a ese día y hora exacta.
+
+**Pruebas de aceptación**
+
+#### R.F.16. Parada bajada
+-Como usuario quiero indicarle al conductor en qué parada quiero bajar para que el conductor no se equivoque y no se pase la parada.
+
+**Pruebas de aceptación**
+
+#### R.F.17. Aviso retraso
+-Como conductor quiero poder avisar si el bus va con retraso o no, notificando la llegada a cada parada, para avisar a los pasajeros de la situación.
+
+**Pruebas de aceptación**
+
+#### R.F.18. Averías
+-Como conductor quiero poder notificar de averías a la empresa y los pasajeros, para que estos sepan que el bus no va a continuar el trayecto preestablecido.
+
+**Pruebas de aceptación**
+
 #### 4.1.1. Requisitos de información
 
 ##### R.I.01. Consulta de información de la parada
