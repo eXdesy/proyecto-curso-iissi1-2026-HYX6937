@@ -4,8 +4,8 @@
 
 1. Espina Apellaniz, David
 2. Pérez Gómez, Juan
-3. Mukhiddinov Dilyorbek
-4. Apellidos, Nombre
+3. Mukhiddinov, Dilyorbek
+4. Oña Conde, Luis
 
 ## 1. Introducción al problema
 
