@@ -272,24 +272,6 @@ Como usuario del transporte público, quiero que la aplicación tenga una interf
 - Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
 - Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
 
-#### R.N.F.05. Usabilidad y accesibilidad
-
-Como usuario del transporte público, quiero que la aplicación tenga una interfaz clara y fácil de utilizar, para consultar información y realizar operaciones sin dificultad.
-
-**Criterio de aceptación**
-
-- Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
-- Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
-
-#### R.N.F.05. Usabilidad y accesibilidad
-
-Como usuario del transporte público, quiero que la aplicación tenga una interfaz clara y fácil de utilizar, para consultar información y realizar operaciones sin dificultad.
-
-**Criterio de aceptación**
-
-- Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
-- Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
-
 #### R.N.F.06. Precisión de la ubicación
 
 La información GPS debe permitir conocer la posición del autobús con suficiente precisión.
