@@ -1,6 +1,6 @@
 # SmartBus
 
-## Miembros del grupo LX-XXX-X (sustituir)
+## Miembros del grupo L5-01
 
 1. Espina Apellaniz, David
 2. Pérez Gómez, Juan
@@ -62,12 +62,8 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 ## 4. Catálogo de requisitos
 
 ### 4.1. Requisitos funcionales
-
-#### R.F.01. Título requisito funcional
-
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+#### R.F.01. Ubicación
+-Como usuario quiero que la aplicación me informe de la ubicación exacta del autobús para calcular mejor el tiempo de espera en la parada.
 
 **Prueba de aceptación**
 - Descripción de la primera comprobación a realizar
@@ -75,6 +71,42 @@ para [razón]
 - Se debe aplicar la regla de negocio R.N.XX.
 - ...
 
+#### R.F.02. Capacidad del autobús
+-Como usuario quiero que la aplicación me informe de la capacidad del autobús en todo momento para calcular para ver si voy a caber en el bus.
+
+**Prueba de aceptación**
+
+#### R.F.03. Capacidad máxima
+-Como usuario quiero que la aplicación me muestre la capacidad máxima del autobús para saber si quepo o no. También quiero saber la capacidad máxima para que no se acepte a un número de pasajero mayor a la capacidad del bus y así disminuir el número de heridos y problemas en caso de accidente.
+
+**Prueba de acceptación**
+
+#### R.F.04. Registro Autobús
+-Como usuario quiero que la aplicación me de un registre el número de personas que se encuentran en el bus, sumando las que se suben a él y restando las que se bajan.
+
+**Pruebas de acceptación**
+
+#### R.F.05. Paradas de cada línea
+-Como usuario quiero que el sistema me marque las paradas disponibles para esa línea de autobús para saber donde cogerlo.
+
+**Pruebas de aceptación**
+
+#### R.F.06. Paradas
+-Como usuario quiero que la aplicación me diga la ubicación de la parada, que líneas pasan por ella y cuanto tiempo le queda a un bus de cada línea en llegar a la parada.
+
+**Pruebas de acceptación**
+
+#### R.F.07. Pagos
+-Como usuario quiero poder tener distintas formas de pago como con mi móvil, tarjeta de crédito, efectivo o bonobus, para tener flexibilidad y no quedarme en tierra por no poder pagar el viaje.
+
+**Pruebas de aceptación**
+
+#### R.F.08. Trasbordo
+-Como usuario quiero que se me aplique un descuento si me subo en 2 autobuses consecutivos para evitar ahorrar en mis viajes.
+
+**Pruebas de aceptación**
+
+#### R.F.09.
 #### 4.1.1. Requisitos de información
 
 ##### R.I.01. Título requisito de información
@@ -104,6 +136,13 @@ Aforo lógico: El número actual de pasajeros a bordo de un autobús nunca puede
 
 ##### RN.05. 
 Bloqueo antifraude: Si el sistema registra más de tres validaciones consecutivas del mismo título de transporte en la misma máquina en menos de 2 minutos, el bonobús virtual se bloqueará temporalmente.
+
+##### RN.06. Descuento en el trasbordo:
+Para que se efectúe el descuento en el trasbordo tienes que haber utilizado el pago con el mismo bonobus o tarjeta.
+
+##### RN.07. Hora de descuento de trasbordo
+Para que se efectue el descuento del trasbordo tiene que pasar menos de 1 hora entre los pagos.
+
 
 
 
