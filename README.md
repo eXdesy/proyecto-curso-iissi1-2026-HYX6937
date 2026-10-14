@@ -75,7 +75,8 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como usuario quiero que la aplicación me informe de la capacidad del autobús en todo momento para calcular para ver si voy a caber en el bus.
 
 **Prueba de aceptación**
-
+- Comprobar que, tras el cierre de puertas y el consecuente evento de "registro de parada", la aplicación móvil actualiza el indicador visual de ocupación del autobús que se aproxima.
+- Verificar que el usuario que espera en las paradas posteriores de la línea puede ver en su pantalla si el autobús tiene plazas libres (baja ocupación), plazas limitadas (media ocupación) o si está próximo a llenarse (alta ocupación), basándose en el balance neto consolidado en la última parada por la que pasó el vehículo.
 
 #### R.F.03. Capacidad máxima
 -Como usuario quiero que la aplicación me muestre la capacidad máxima del autobús para saber si quepo o no. También quiero saber la capacidad máxima para que no se acepte a un número de pasajero mayor a la capacidad del bus y así disminuir el número de heridos y problemas en caso de accidente.
@@ -110,16 +111,22 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como usuario quiero poder tener distintas formas de pago como con mi móvil, tarjeta de crédito, efectivo o bonobus, para tener flexibilidad y no quedarme en tierra por no poder pagar el viaje.
 
 **Pruebas de aceptación**
+- Comprobar que al efectuar el registro de pago en el validador físico de la parada o del autobús, la transacción se asocia al identificador único de la parada actual.
+- Verificar que si la transacción digital es autorizada, el sistema emite un ticket digital o confirmación en pantalla vinculando la tarifa plana o de tramo correspondiente a la parada donde se inició el viaje.
 
 #### R.F.08. Pagos con bonos
 -Como personal de gestión quiero que le reste el dinero correspondiente al viaje al bono.
 
 **Pruebas de aceptación**
-
+- Comprobar que al aproximar el bonobús al validador durante la detención en una parada, el sistema descuenta el importe exacto del saldo del bono del usuario.
+- Verificar que si el saldo remanente es insuficiente para cubrir la tarifa base hasta el final de la línea, el validador emite una señal de rechazo y no registra al pasajero a bordo.
+- 
 #### R.F.09. Trasbordo
 -Como usuario quiero que se me aplique un descuento si me subo en 2 autobuses consecutivos para poder ahorrar en mis viajes.
 
 **Pruebas de aceptación**
+- Comprobar que el sistema registra la marca de tiempo (fecha y hora exacta) en el momento en que se genera el evento de "fichaje" en la parada del primer autobús.
+- Verificar que si el usuario realiza un registro de paso en una línea diferente, el sistema calcula la diferencia temporal y aplica el descuento si se encuentra dentro del rango de minutos permitidos.
 
 #### R.F.10. Tráfico denso o averías
 -Como usuario quiero que la aplicación me notifique en caso de retraso por tráfico o por algún tipo de avería para poder tomar medidas a la hora de llegar a mi destino.
@@ -139,17 +146,22 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como usuario quiero poder recargar el saldo de mi bonobús virtual directamente desde la app mediante tarjeta de crédito/débito, Apple Pay o Google Pay.
 
 **Pruebas de aceptación**
+- Comprobar que el usuario puede realizar una recarga económica en su bonobús virtual desde la aplicación a través de cualquier pasarela digital de pago integrada.
+- Verificar que los servidores centrales actualizan el saldo digital de la cuenta, de modo que en la próxima parada donde el usuario intente validar su viaje, el lector reconozca el nuevo importe disponible de forma inmediata.
 
 #### R.F.13. Paradas y líneas favoritas
 -Como usuario quiero poder escoger mis paradas y líneas habituales como favoritas para que me sea más rápido acceder a ellas.
 
 **Pruebas de aceptación**
+- Comprobar que el usuario puede almacenar en su perfil los códigos numéricos de sus paradas más recurrentes.
+- Verificar que al iniciar la aplicación, esta consulta directamente el estado del último autobús que haya registrado su paso por las paradas inmediatamente anteriores a las favoritas guardadas para mostrar los tiempos sin retraso.
 
 #### R.F.14. Cambio por eventos
 -Como administrador quiero poder cambiar las rutas de las líneas de los buses para no tener que cancelar líneas por cortes de carretera.
 
 **Pruebas de aceptación**
-
+- Comprobar que desde la plataforma de administración se puede eliminar temporalmente un subconjunto de paradas de la secuencia de una línea (debido a un desvío o corte de calle).
+- Verificar que el cálculo de previsión de tiempos omite automáticamente los tramos correspondientes a las paradas anuladas, recalculando el salto directo entre la última parada operativa previa al corte y la primera parada de reincorporación de la ruta.
 
 #### R.F.15. Historial de velocidad en hora punta
 
@@ -170,12 +182,15 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como conductor quiero poder avisar si el bus va con retraso o no, notificando la llegada a cada parada, para avisar a los pasajeros de la situación.
 
 **Pruebas de aceptación**
+- Comprobar que si el conductor activa manualmente el botón de "Retraso en ruta", el terminal del autobús asocia la alerta al tramo que se encuentra recorriendo en ese instante.
+-  Verificar que la aplicación notifica a los usuarios de las paradas consecutivas pendientes de registro un incremento fijo de tiempo de cortesía en sus pantallas informativas.
 
 #### R.F.18. Averías
 -Como conductor quiero poder notificar de averías a la empresa y los pasajeros, para que estos sepan que el bus no va a continuar el trayecto preestablecido.
 
 **Pruebas de aceptación**
-
+- Comprobar que al presionar el botón de "Avería crítica", el autobús queda marcado en el sistema central en estado "Inactivo" en su última parada registrada.
+- Verificar que la aplicación elimina instantáneamente las previsiones de llegada de dicho vehículo para todas las paradas posteriores de la secuencia y actualiza el contador de pasajeros a bordo a cero (0).
 
 #### 4.1.1. Requisitos de información
 
