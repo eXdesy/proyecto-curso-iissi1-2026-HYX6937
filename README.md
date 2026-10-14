@@ -158,7 +158,7 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 **Pruebas de aceptación**
 - Comprobar que la base de datos almacena el tiempo exacto que le toma a los autobuses completar el trayecto entre la Parada A y la Parada B, agrupando los registros por día de la semana y franja horaria.
 - Verificar que el cálculo del R.F.11 utiliza la media histórica de tiempo de ese tramo específico según el momento del día, absorbiendo los retrasos estructurales de las horas punta.
-- 
+  
 #### R.F.16. Parada bajada
 -Como usuario quiero indicarle al conductor en qué parada quiero bajar para que el conductor no se equivoque y no se pase la parada.
 
