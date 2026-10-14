@@ -215,6 +215,7 @@ Como pasajero quiero visualizar un registro de mis viajes recientes (fecha, hora
 - Se debe aplicar la regla de negocio RN.06 y RN.07: Verificar que si el viaje se realiza en menos de 1 hora respecto al anterior y con el mismo bonobús, el historial muestra correctamente la aplicación del descuento en el importe.
 
 #### R.I.05. Consulta de itinerario de la línea
+
 Como pasajero quiero consultar el recorrido completo de una línea para saber exactamente qué trayecto hace y en qué parada de destino debo bajarme.
 
 **Prueba de aceptación**
@@ -222,6 +223,7 @@ Como pasajero quiero consultar el recorrido completo de una línea para saber ex
 - Comprobar que existe un botón o pestaña para alternar visualmente entre el trayecto de ida y el trayecto de vuelta.
 
 #### R.I.06. Avisos e incidencias en el servicio
+
 Como pasajero quiero ver alertas operativas asociadas a una línea o parada (calles cortadas, desvíos por obras o averías) para modificar mi planificación de viaje si hay alteraciones en el servicio normal.
 
 **Prueba de aceptación**
@@ -229,18 +231,52 @@ Como pasajero quiero ver alertas operativas asociadas a una línea o parada (cal
 - Comprobar que, al pulsar sobre la advertencia, se despliega un texto explicativo con el motivo de la incidencia y la duración prevista.
 
 #### R.I.07. Monitorización global de la línea
+
 Como personal de gestión del transporte quiero consultar un panel de control con el estado en vivo de toda la flota de una línea (vehículos asignados, ubicación actual de cada uno y aforo) para detectar retrasos, aglomeraciones o huecos sin servicio.
 
 **Prueba de aceptación**
-- Comprobar que el sistema muestra una lista o mapa interno con todos los vehículos que están prestando servicio en la línea seleccionada en ese instante.
+- Comprobar que el sistema muestra una lista o registro de la última parada superada por cada autobús que están prestando servicio en la línea seleccionada en ese instante.
 - Se debe aplicar la regla de negocio RN.02: comprobar que el panel del gestor resalta visualmente los vehículos que han reportado un estado de ocupación máxima.
 
 #### R.I.08. Registro de bloqueos e incidencias de pago
+
 Como administrador del sistema quiero disponer de un registro de los bonobuses virtuales que han sido suspendidos para auditar posibles vulnerabilidades o usos indebidos de la aplicación.
 
 **Prueba de aceptación**
 - Comprobar que el sistema genera una lista con la fecha, hora, identificador del usuario y número de la máquina validadora donde se produjo cada incidente.
 - Se debe aplicar la regla de negocio RN.05 : verificar que el informe registra automáticamente a aquellos usuarios que han superado las 5 validaciones en menos de 2 minutos.
+
+#### R.I.09. Avisos de solicitud de bajada en parada
+
+Como conductor del bus quiero visualizar las solicitudes de bajada realizadas por los pasajeros desde la app (nombre/número de la próxima parada solicitada y número de personas que van a bajar) para saber con antelación si debo detenerme en la siguiente parada sin pasarme de largo.
+
+**Prueba de aceptación**
+- Comprobar que cuando un pasajero solicita bajar desde la aplicación (R.F.16), se ilumina un aviso en la pantalla del conductor indicando la parada exacta.
+- Comprobar que el aviso desaparece automáticamente de la pantalla del conductor una vez que el autobús supera dicha parada y abre las puertas.
+
+#### R.I.10. Listado de paradas y líneas favoritas
+
+Como pasajero quiero consultar mi lista personalizada de paradas y líneas guardadas como favoritas (con acceso directo a su estado, incidencias y próximos tiempos de llegada) para ver rápidamente la información de mis trayectos habituales sin tener que buscarlos cada vez.
+
+**Prueba de aceptación**
+- Comprobar que en la pantalla principal existe una sección de "Favoritos" que muestra únicamente las paradas y líneas marcadas previamente por el usuario (R.F.13).
+- Comprobar que para cada parada favorita de la lista se muestra directamente el tiempo estimado del próximo autobús y su nivel de ocupación actual.
+
+#### R.I.11. Historial de recargas y métodos de pago
+
+Como pasajero quiero consultar el registro de mis recargas de saldo (fecha, hora, importe añadido y método de pago utilizado como Apple Pay, Google Pay o tarjeta) para llevar un control de mis transacciones bancarias dentro de la aplicación.
+
+**Prueba de aceptación**
+- Comprobar que tras realizar una recarga exitosa (R.F.12), aparece un nuevo registro con el importe exacto y los últimos cuatro dígitos de la tarjeta o plataforma utilizada.
+- Se debe aplicar la regla de negocio RN.03: verificar que ninguna recarga registrada permita que el saldo total resultante supere el límite de 50€.
+
+#### R.I.12. Estadísticas de tiempos y velocidad por tramo
+
+Como personal de gestión del transporte quiero consultar el registro histórico de tiempos de paso y velocidades medias entre paradas (clasificado por línea, día de la semana y franja horaria) para ajustar con precisión las previsiones de llegada en horas punta.
+
+**Prueba de aceptación**
+- Comprobar que el sistema muestra el tiempo medio en minutos que tardan los autobuses en ir de una parada a la siguiente según el tramo horario seleccionado (R.F.15).
+- Comprobar que el informe resalta aquellos tramos entre paradas donde se producen retrasos recurrentes informados por los conductores (R.F.17).
 
 #### 4.1.2. Reglas de negocio
 
@@ -268,7 +304,14 @@ Para que se efectue el descuento del trasbordo tiene que pasar menos de 1 hora e
 #### RN.08. Tarifa base por viaje:
 El coste estándar de validación para un trayecto será de 0,50€.
 
+#### RN.09. Validación para solicitar parada de bajada:
+Un pasajero solo podrá solicitar una parada de bajada desde la app si cuenta con una validación activa en ese mismo autobús y la parada seleccionada es posterior a la última parada superada por el vehículo.
 
+#### RN.10. Cambio de línea en el transbordo:
+El descuento por transbordo solo se aplicará si la segunda validación se realiza en una línea de autobús distinta a la del primer viaje.
+
+#### RN.11. Importe mínimo de recarga:
+Las recargas de saldo del bonobús virtual desde la aplicación (R.F.12) deberán ser de un importe mínimo de 5,00€.
 
 
 
