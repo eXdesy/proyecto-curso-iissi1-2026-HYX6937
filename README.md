@@ -1,9 +1,9 @@
 # SmartBus
 
-## Miembros del grupo LX-XXX-X (sustituir)
+## Miembros del grupo L5-01
 
 1. Espina Apellaniz, David
-1. Apellidos, Nombre
+2. Pérez Gómez, Juan
 1. Apellidos, Nombre
 1. Apellidos, Nombre
 
@@ -76,10 +76,12 @@ Para solucionar todos estos problemas, en este proyecto proponemos el desarrollo
 
 ### R.F.07. Pagos
 -Como usuario quiero poder tener distintas formas de pago como con mi móvil, tarjeta de crédito, efectivo o bonobus, para tener flexibilidad y no quedarme en tierra por no poder pagar el viaje.
+
 **Pruebas de aceptación**
 
 ### R.F.08 Trasbordo
 -Como usuario quiero que se me aplique un descuento si me subo en 2 autobuses consecutivos para evitar ahorrar en mis viajes.
+
 **Pruebas de aceptación**
 
 
