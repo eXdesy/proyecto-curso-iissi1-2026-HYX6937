@@ -68,35 +68,43 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como usuario quiero que la aplicación me informe de la última parada que haya pasado el bus del autobús para calcular mejor el tiempo de espera en la parada.
 
 **Prueba de aceptación**
-- Descripción de la primera comprobación a realizar
-- Descripción de la segunda comprobación a realizar
-- Se debe aplicar la regla de negocio R.N.XX.
-- ...
+- Comprobar que, cuando el autobús abre y cierra sus puertas en una parada (evento de parada), el sistema del vehículo envía un paquete de datos actualizando su estado a "Parada X completada".
+- Verificar que la aplicación móvil del usuario muestra el nombre de esa última parada registrada como la ubicación actual del autobús, eliminando cualquier indicador de movimiento intermedio en un mapa.
 
 #### R.F.02. Capacidad del autobús
 -Como usuario quiero que la aplicación me informe de la capacidad del autobús en todo momento para calcular para ver si voy a caber en el bus.
 
 **Prueba de aceptación**
 
+
 #### R.F.03. Capacidad máxima
 -Como usuario quiero que la aplicación me muestre la capacidad máxima del autobús para saber si quepo o no. También quiero saber la capacidad máxima para que no se acepte a un número de pasajero mayor a la capacidad del bus y así disminuir el número de heridos y problemas en caso de accidente.
 
 **Prueba de acceptación**
+- Comprobar que el sistema contrasta el conteo de pasajeros activos del R.F.04 contra el límite estático de la ficha técnica del modelo de autobús asignado a la ruta.
+- Verificar que, si el último evento de subida en una parada provoca que el número de pasajeros a bordo iguale o supere la capacidad máxima permitida, el sistema bloquea automáticamente la emisión de nuevos billetes virtuales para ese vehículo y lo marca como "Completo" para las paradas posteriores.
 
 #### R.F.04. Registro Autobús
 -Como usuario quiero que la aplicación me de un registre el número de personas que se encuentran en el bus, sumando las que se suben a él y restando las que se bajan.
 
 **Pruebas de acceptación**
 
+- Comprobar que al registrarse el paso por una parada, el sistema consolida el balance neto sumando los pasajeros que han validado su billete (subidas) y restando el conteo de bajadas detectado.
+- Verificar que el número resultante actualiza instantáneamente el indicador de ocupación que verán los usuarios que esperan en las siguientes paradas de la línea.
+  
 #### R.F.05. Paradas de cada línea
 -Como usuario quiero que el sistema me marque las paradas disponibles para esa línea de autobús para saber donde cogerlo.
 
 **Pruebas de aceptación**
-
+- Comprobar que la aplicación despliega la secuencia ordenada de paradas (lista de hitos secuenciales) cargada en la base de datos para la línea seleccionada.
+- Verificar que el sistema asocia a cada parada un orden numérico estricto (ej: Parada 1, Parada 2, Parada 3) para poder calcular las distancias en base a "paradas restantes".
+  
 #### R.F.06. Paradas
 -Como usuario quiero que la aplicación me diga la ubicación de la parada, que líneas pasan por ella y cuanto tiempo le queda a un bus de cada línea en llegar a la parada.
 
 **Pruebas de acceptación**
+- Comprobar que, al consultar una parada, el sistema identifica cuántas paradas físicas de distancia le quedan al autobús para llegar a la posición del usuario, restando el número de la parada actual del autobús del número de la parada de espera.
+- Verificar que el tiempo restante mostrado se calcula multiplicando el número de paradas restantes por el tiempo estimado por tramo, en lugar de medir distancias métricas.
 
 #### R.F.07. Pagos
 -Como usuario quiero poder tener distintas formas de pago como con mi móvil, tarjeta de crédito, efectivo o bonobus, para tener flexibilidad y no quedarme en tierra por no poder pagar el viaje.
@@ -117,12 +125,16 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como usuario quiero que la aplicación me notifique en caso de retraso por tráfico o por algún tipo de avería para poder tomar medidas a la hora de llegar a mi destino.
 
 **Pruebas de aceptación**
-
+- Comprobar que el sistema detecta automáticamente una anomalía de tráfico si el autobús tarda más tiempo del umbral permitido en enviar el evento de "Fichaje" de la siguiente parada de la ruta.
+- Verificar que, al superarse dicho umbral de tiempo sin registros, la app marca el estado del autobús como "Retrasado en tramo [Parada A - Parada B]".
+  
 #### R.F.11. Previsión de llegada
 -Como usuario quiero que la aplicación me prevea el tiempo medio que tarda el bus en llegar a la parada que escoja para poder saber mi hora de llegada.
 
 **Pruebas de aceptación**
-
+- Comprobar que la previsión del tiempo de llegada a una parada seleccionada se genera sumando los tiempos estándar asignados a cada uno de los tramos pendientes que le quedan por recorrer al autobús desde su última parada registrada.
+- Verificar que el tiempo total estimado decrece en bloques discretos de minutos cada vez que el autobús emite un nuevo evento de confirmación de parada superada.
+  
 #### R.F.12. Recarga de bonobús
 -Como usuario quiero poder recargar el saldo de mi bonobús virtual directamente desde la app mediante tarjeta de crédito/débito, Apple Pay o Google Pay.
 
@@ -144,12 +156,16 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como sistema de gestión quiero calcular los tiempos de espera basándome en la velocidad media histórica de ese tramo a ese día y hora exacta.
 
 **Pruebas de aceptación**
-
+- Comprobar que la base de datos almacena el tiempo exacto que le toma a los autobuses completar el trayecto entre la Parada A y la Parada B, agrupando los registros por día de la semana y franja horaria.
+- Verificar que el cálculo del R.F.11 utiliza la media histórica de tiempo de ese tramo específico según el momento del día, absorbiendo los retrasos estructurales de las horas punta.
+- 
 #### R.F.16. Parada bajada
 -Como usuario quiero indicarle al conductor en qué parada quiero bajar para que el conductor no se equivoque y no se pase la parada.
 
 **Pruebas de aceptación**
-
+- Comprobar que, cuando el usuario presiona "Solicitar bajada" en la app móvil, el sistema asocia la petición a la siguiente parada lógica de la secuencia de la línea (tomando como referencia la última parada registrada por el autobús).
+- Verificar que la señal llega a la cabina del conductor de forma inmediata, permitiéndole saber con antelación que debe detenerse en el próximo punto físico de parada obligatoria de la ruta.
+  
 #### R.F.17. Aviso retraso
 -Como conductor quiero poder avisar si el bus va con retraso o no, notificando la llegada a cada parada, para avisar a los pasajeros de la situación.
 
@@ -159,6 +175,7 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 -Como conductor quiero poder notificar de averías a la empresa y los pasajeros, para que estos sepan que el bus no va a continuar el trayecto preestablecido.
 
 **Pruebas de aceptación**
+
 
 #### 4.1.1. Requisitos de información
 
