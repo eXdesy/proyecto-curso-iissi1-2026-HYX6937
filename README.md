@@ -3,9 +3,9 @@
 ## Miembros del grupo LX-XXX-X (sustituir)
 
 1. Espina Apellaniz, David
-1. Apellidos, Nombre
-1. Apellidos, Nombre
-1. Apellidos, Nombre
+2. Pérez Gómez, Juan
+3. Mukhiddinov Dilyorbek
+4. Apellidos, Nombre
 
 ## 1. Introducción al problema
 
@@ -35,7 +35,29 @@ Para solucionar todos estos problemas, en este proyecto proponemos el desarrollo
 
 ### 3.1. Requisitos generales
 
+#### R.G.01. Mejorar la precisión de la información del transporte
+
+Como usuario del transporte público, quiero consultar información precisa y actualizada sobre la ubicación y el tiempo estimado de llegada de los autobuses, para planificar mejor mis desplazamientos.
+
+#### R.G.02. Consultar la ocupación de los autobuses
+
+Como usuario del transporte público, quiero conocer el nivel de ocupación de los autobuses antes de que lleguen a mi parada, para poder elegir la mejor alternativa de transporte.
+
+#### R.G.03. Digitalizar los títulos de transporte
+
+Como usuario del transporte público, quiero utilizar mi bonobús desde el teléfono móvil, para poder pagar y validar mis viajes sin depender exclusivamente de una tarjeta física.
+
+#### R.G.04. Facilitar la gestión del transporte
+
+Como responsable de la gestión del transporte, quiero disponer de información actualizada sobre la ubicación y la ocupación de los autobuses, para mejorar el seguimiento del servicio y la información proporcionada a los pasajeros.
+
 ### 3.2. Usuarios del sistema
+
+- Pasajero: consulta las líneas, las paradas, la ubicación y los tiempos estimados de llegada de los autobuses. También consulta su ocupación, gestiona su bonobús virtual y valida sus viajes mediante NFC.
+
+- Personal de gestión del transporte: supervisa la información de los autobuses y el estado del servicio para facilitar su seguimiento y gestión.
+
+- Administrador del sistema: gestiona los usuarios y los parámetros generales del sistema, así como la configuración necesaria para su correcto funcionamiento.
 
 ## 4. Catálogo de requisitos
 
