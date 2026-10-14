@@ -197,6 +197,34 @@ Como pasajero quiero visualizar un registro de mis viajes recientes (fecha, hora
 - Comprobar que tras validar el billete, el nuevo viaje aparece en la lista del historial.
 - Se debe aplicar la regla de negocio RN.06 y RN.07: Verificar que si el viaje se realiza en menos de 1 hora respecto al anterior y con el mismo bonobús, el historial muestra correctamente la aplicación del descuento en el importe.
 
+#### R.I.05. Consulta de itinerario de la línea
+Como pasajero quiero consultar el recorrido completo de una línea para saber exactamente qué trayecto hace y en qué parada de destino debo bajarme.
+
+**Prueba de aceptación**
+- Comprobar que al seleccionar una línea, el sistema muestra todas sus paradas ordenadas desde la cabecera hasta el final.
+- Comprobar que existe un botón o pestaña para alternar visualmente entre el trayecto de ida y el trayecto de vuelta.
+
+#### R.I.06. Avisos e incidencias en el servicio
+Como pasajero quiero ver alertas operativas asociadas a una línea o parada (calles cortadas, desvíos por obras o averías) para modificar mi planificación de viaje si hay alteraciones en el servicio normal.
+
+**Prueba de aceptación**
+- Comprobar que si una parada está inactiva por obras, aparece marcada visualmente con un icono de advertencia rojo en el buscador de paradas.
+- Comprobar que, al pulsar sobre la advertencia, se despliega un texto explicativo con el motivo de la incidencia y la duración prevista.
+
+#### R.I.07. Monitorización global de la línea
+Como personal de gestión del transporte quiero consultar un panel de control con el estado en vivo de toda la flota de una línea (vehículos asignados, ubicación actual de cada uno y aforo) para detectar retrasos, aglomeraciones o huecos sin servicio.
+
+**Prueba de aceptación**
+- Comprobar que el sistema muestra una lista o mapa interno con todos los vehículos que están prestando servicio en la línea seleccionada en ese instante.
+- Se debe aplicar la regla de negocio RN.02: comprobar que el panel del gestor resalta visualmente los vehículos que han reportado un estado de ocupación máxima.
+
+#### R.I.08. Registro de bloqueos e incidencias de pago
+Como administrador del sistema quiero disponer de un registro de los bonobuses virtuales que han sido suspendidos para auditar posibles vulnerabilidades o usos indebidos de la aplicación.
+
+**Prueba de aceptación**
+- Comprobar que el sistema genera una lista con la fecha, hora, identificador del usuario y número de la máquina validadora donde se produjo cada incidente.
+- Se debe aplicar la regla de negocio RN.05 : verificar que el informe registra automáticamente a aquellos usuarios que han superado las 5 validaciones en menos de 2 minutos.
+
 #### 4.1.2. Reglas de negocio
 
 ##### RN.01. Saldo suficiente: 
@@ -215,10 +243,13 @@ El número actual de pasajeros a bordo de un autobús nunca puede ser un valor n
 Si el sistema registra más de cinco validaciones consecutivas del mismo título de transporte en la misma máquina en menos de 2 minutos, el bonobús virtual se bloqueará temporalmente.
 
 ##### RN.06. Descuento en el trasbordo:
-Para que se efectúe el descuento en el trasbordo tienes que haber utilizado el pago con el mismo bonobus o tarjeta.
+Al pagar varios billetes con el mismo bonobús, el sistema solo aplicará el descuento de transbordo a un número de validaciones igual al de viajes abonados en el autobús de origen.
 
-##### RN.07. Hora de descuento de trasbordo
+##### RN.07. Hora de descuento de trasbordo:
 Para que se efectue el descuento del trasbordo tiene que pasar menos de 1 hora entre los pagos.
+
+#### RN.08. Tarifa base por viaje:
+El coste estándar de validación para un trayecto será de 0,50€.
 
 
 
