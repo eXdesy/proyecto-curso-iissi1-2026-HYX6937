@@ -226,12 +226,109 @@ Para que se efectue el descuento del trasbordo tiene que pasar menos de 1 hora e
 
 ### 4.2. Mapa de historias de usuario (opcional)
 
-### 4.3. Requisitos no funcionales (opcional)
+### 4.3. Requisitos no funcionales
 
-**R.N.F. 01. Título requisito no funcional**
-Como [tipo de usuario]
-quiero [servicio]
-para [razón]
+#### R.N.F.01. Rendimiento de la aplicación
+
+Como usuario del transporte público, quiero que la aplicación responda rápidamente a mis consultas, para consultar la información de los autobuses sin esperas innecesarias.
+
+**Criterio de aceptación**
+
+- Las consultas de ubicación, paradas y ocupación deben responder en menos de 1 segundos en condiciones normales de funcionamiento.
+- Las consultas principales deben responder en menos de 2 segundos con hasta 1.000 usuarios concurrentes.
+
+#### R.N.F.02. Actualización de la información
+
+Como usuario del transporte público, quiero que la información sobre la ubicación y la ocupación de los autobuses se actualice periódicamente, para tomar decisiones basadas en datos recientes.
+
+**Criterio de aceptación**
+
+- La aplicación debe mostrar cuándo se actualizaron por última vez los datos de ubicación y ocupación.
+- La aplicación debe indicar cuando la información disponible está desactualizada o no se puede obtener.
+
+#### R.N.F.03. Seguridad y privacidad
+
+Como usuario del transporte público, quiero que mis datos personales y la información de mi bonobús estén protegidos, para evitar accesos y operaciones no autorizados.
+
+**Criterio de aceptación**
+
+- Solo los usuarios autorizados pueden acceder a la información privada de su cuenta.
+- Las operaciones de consulta y modificación del bonobús deben verificar los permisos correspondientes.
+
+#### R.N.F.04. Disponibilidad del sistema
+
+Como usuario del transporte público, quiero que SmartBus esté disponible cuando necesite consultar información o utilizar mi bonobús virtual, para poder planificar y realizar mis viajes.
+
+**Criterio de aceptación**
+
+- Si el servicio no está disponible, la aplicación debe informar al usuario y no mostrar datos antiguos como si fueran actuales.
+
+#### R.N.F.05. Usabilidad y accesibilidad
+
+Como usuario del transporte público, quiero que la aplicación tenga una interfaz clara y fácil de utilizar, para consultar información y realizar operaciones sin dificultad.
+
+**Criterio de aceptación**
+
+- Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
+- Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
+
+#### R.N.F.05. Usabilidad y accesibilidad
+
+Como usuario del transporte público, quiero que la aplicación tenga una interfaz clara y fácil de utilizar, para consultar información y realizar operaciones sin dificultad.
+
+**Criterio de aceptación**
+
+- Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
+- Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
+
+#### R.N.F.05. Usabilidad y accesibilidad
+
+Como usuario del transporte público, quiero que la aplicación tenga una interfaz clara y fácil de utilizar, para consultar información y realizar operaciones sin dificultad.
+
+**Criterio de aceptación**
+
+- Los mensajes de error deben explicar el problema y, cuando sea posible, indicar cómo continuar.
+- Las funciones principales, como consultar una parada, comprobar la ocupación y acceder al bonobús virtual, deben estar identificadas claramente.
+
+#### R.N.F.06. Precisión de la ubicación
+
+La información GPS debe permitir conocer la posición del autobús con suficiente precisión.
+
+**Criterio de aceptación**
+
+- En condiciones normales, el error de ubicación no debe superar los 20 metros
+
+#### R.N.F.07. Tiempo de validación NFC
+
+La validación del bonobús virtual debe realizarse rápidamente para evitar colas al subir al autobús.
+
+**Criterio de aceptación**
+
+- El resultado de la validación debe mostrarse en menos de 2 segundos en condiciones normales.
+
+#### R.N.F.08. Gestión de la pérdida de conexión
+
+La aplicación debe informar de los problemas de conectividad sin presentar información desactualizada como si fuera actual.
+
+**Criterio de aceptación**
+
+- Si se pierde la conexión, debe mostrarse un aviso y la hora de la última actualización disponible.
+
+#### R.N.F.09. Compatibilidad
+
+La aplicación debe funcionar correctamente en los dispositivos móviles y relojes intelegentes compatibles con el proyecto.
+
+**Criterio de aceptación**
+
+- Mantener las funciones principales en las versiones de Android e iOS que se definan como compatibles.
+
+#### R.N.F.10. Protección de las operaciones de pago
+
+El sistema debe garantizar que las operaciones de validación y descuento de saldo se procesen de forma consistente.
+
+**Criterio de aceptación**
+
+- Una misma operación identificada no debe descontar el saldo más de una vez, aunque se reintente por un fallo de conexión.
 
 -- fin entregable 1 --
 
