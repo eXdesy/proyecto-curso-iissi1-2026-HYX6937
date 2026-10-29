@@ -194,105 +194,38 @@ Como responsable de la gestión del transporte, quiero disponer de información 
 
 #### 4.1.1. Requisitos de información
 
-##### R.I.01. Consulta de información de la parada
-
-Como pasajero quiero consultar los datos detallados de una parada específica (nombre, ubicación, líneas que la utilizan y tiempos de llegada estimados por línea) para saber cuándo llegará mi autobús y planificar mi tiempo de espera.
-
-**Prueba de aceptación**
-- Comprobar que, al introducir el número o nombre de la parada en el buscador, se muestran todas las líneas operativas que pasan por ella.
-- Comprobar que para cada línea se muestra el tiempo estimado de llegada de los dos próximos autobuses.
-- Se debe aplicar la regla de negocio RN.02 : Verificar que si un autobús en camino tiene su aforo al máximo, no se muestra su tiempo de llegada o se indica visualmente que está "Completo".
-
-#### R.I.02. Información del estado de ocupación del autobús
-
-Como pasajero quiero visualizar el aforo actual del autobús que se dirige a mi parada para decidir si espero a ese vehículo o busco una alternativa si está muy lleno.
-
-**Prueba de aceptación**
-- Comprobar que junto al tiempo de llegada de cada autobús en la pantalla de la parada, se muestra un indicador con su ocupación.
-- Comprobar que el sistema actualiza este aforo en tiempo real tras cada parada realizada por el vehículo.
-- Se debe aplicar la regla de negocio RN.04: Verificar que el número de pasajeros mostrados nunca es menor que cero.
-
-#### R.I.03. Información del Bonobús Virtual
-
-Como pasajero quiero ver los datos de mi título de transporte digital (tipo de abono, saldo disponible y estado) para comprobar si tengo fondos suficientes antes de subir al autobús e intentar validar mi viaje.
-
-**Prueba de aceptación**
-- Comprobar que al abrir la sección de pagos o bonobús en la aplicación, se muestra el saldo en euros actualizado, reflejando los pagos anteriores.
-- Se debe aplicar la regla de negocio RN.03: Verificar que el sistema no permite que el saldo mostrado supere los 50€.
-- Se debe aplicar la regla de negocio RN.05: Comprobar que, si la tarjeta ha sido bloqueada, el estado mostrado es "Bloqueado" y no "Activo".
-
-#### R.I.04. Historial de validaciones y transbordos
-
-Como pasajero quiero visualizar un registro de mis viajes recientes (fecha, hora, línea, importe pagado y si se aplicó descuento por transbordo) para llevar un control personal de mis gastos en transporte.
-
-**Prueba de aceptación**
-- Comprobar que tras validar el billete, el nuevo viaje aparece en la lista del historial.
-- Se debe aplicar la regla de negocio RN.06 y RN.07: Verificar que si el viaje se realiza en menos de 1 hora respecto al anterior y con el mismo bonobús, el historial muestra correctamente la aplicación del descuento en el importe.
-
-#### R.I.05. Consulta de itinerario de la línea
-
-Como pasajero quiero consultar el recorrido completo de una línea para saber exactamente qué trayecto hace y en qué parada de destino debo bajarme.
-
-**Prueba de aceptación**
-- Comprobar que al seleccionar una línea, el sistema muestra todas sus paradas ordenadas desde la cabecera hasta el final.
-- Comprobar que existe un botón o pestaña para alternar visualmente entre el trayecto de ida y el trayecto de vuelta.
-
-#### R.I.06. Avisos e incidencias en el servicio
-
-Como pasajero quiero ver alertas operativas asociadas a una línea o parada (calles cortadas, desvíos por obras o averías) para modificar mi planificación de viaje si hay alteraciones en el servicio normal.
-
-**Prueba de aceptación**
-- Comprobar que si una parada está inactiva por obras, aparece marcada visualmente con un icono de advertencia rojo en el buscador de paradas.
-- Comprobar que, al pulsar sobre la advertencia, se despliega un texto explicativo con el motivo de la incidencia y la duración prevista.
-
-#### R.I.07. Monitorización global de la línea
-
-Como personal de gestión del transporte quiero consultar un panel de control con el estado en vivo de toda la flota de una línea (vehículos asignados, ubicación actual de cada uno y aforo) para detectar retrasos, aglomeraciones o huecos sin servicio.
-
-**Prueba de aceptación**
-- Comprobar que el sistema muestra una lista o registro de la última parada superada por cada autobús que están prestando servicio en la línea seleccionada en ese instante.
-- Se debe aplicar la regla de negocio RN.02: comprobar que el panel del gestor resalta visualmente los vehículos que han reportado un estado de ocupación máxima.
-
-#### R.I.08. Registro de bloqueos e incidencias de pago
-
-Como administrador del sistema quiero disponer de un registro de los bonobuses virtuales que han sido suspendidos para auditar posibles vulnerabilidades o usos indebidos de la aplicación.
-
-**Prueba de aceptación**
-- Comprobar que el sistema genera una lista con la fecha, hora, identificador del usuario y número de la máquina validadora donde se produjo cada incidente.
-- Se debe aplicar la regla de negocio RN.05 : verificar que el informe registra automáticamente a aquellos usuarios que han superado las 5 validaciones en menos de 2 minutos.
-
-#### R.I.09. Avisos de solicitud de bajada en parada
-
-Como conductor del bus quiero visualizar las solicitudes de bajada realizadas por los pasajeros desde la app (nombre/número de la próxima parada solicitada y número de personas que van a bajar) para saber con antelación si debo detenerme en la siguiente parada sin pasarme de largo.
-
-**Prueba de aceptación**
-- Comprobar que cuando un pasajero solicita bajar desde la aplicación (R.F.16), se ilumina un aviso en la pantalla del conductor indicando la parada exacta.
-- Comprobar que el aviso desaparece automáticamente de la pantalla del conductor una vez que el autobús supera dicha parada y abre las puertas.
-
-#### R.I.10. Listado de paradas y líneas favoritas
-
-Como pasajero quiero consultar mi lista personalizada de paradas y líneas guardadas como favoritas (con acceso directo a su estado, incidencias y próximos tiempos de llegada) para ver rápidamente la información de mis trayectos habituales sin tener que buscarlos cada vez.
-
-**Prueba de aceptación**
-- Comprobar que en la pantalla principal existe una sección de "Favoritos" que muestra únicamente las paradas y líneas marcadas previamente por el usuario (R.F.13).
-- Comprobar que para cada parada favorita de la lista se muestra directamente el tiempo estimado del próximo autobús y su nivel de ocupación actual.
-
-#### R.I.11. Historial de recargas y métodos de pago
-
-Como pasajero quiero consultar el registro de mis recargas de saldo (fecha, hora, importe añadido y método de pago utilizado como Apple Pay, Google Pay o tarjeta) para llevar un control de mis transacciones bancarias dentro de la aplicación.
-
-**Prueba de aceptación**
-- Comprobar que tras realizar una recarga exitosa (R.F.12), aparece un nuevo registro con el importe exacto y los últimos cuatro dígitos de la tarjeta o plataforma utilizada.
-- Se debe aplicar la regla de negocio RN.03: verificar que ninguna recarga registrada permita que el saldo total resultante supere el límite de 50€.
-
-#### R.I.12. Estadísticas de tiempos y velocidad por tramo
-
-Como personal de gestión del transporte quiero consultar el registro histórico de tiempos de paso y velocidades medias entre paradas (clasificado por línea, día de la semana y franja horaria) para ajustar con precisión las previsiones de llegada en horas punta.
-
-**Prueba de aceptación**
-- Comprobar que el sistema muestra el tiempo medio en minutos que tardan los autobuses en ir de una parada a la siguiente según el tramo horario seleccionado (R.F.15).
-- Comprobar que el informe resalta aquellos tramos entre paradas donde se producen retrasos recurrentes informados por los conductores (R.F.17).
-
+##### R.I.01. Usuario
+Como usuario quiero poder registrarme en la base de datos, quiero registrar mi nombre, apellidos, email, contraseña y la fecha de registro.
+##### R.I.02. Administrador
+Como administrador quiero registrarme en la base de datos para contratar usuarios y gestionar incidencias.
+##### R.I.03. Conductor
+Como conductor quiero registrarme en la base de datos a la vez que mi contrato para asignarme autobuses y para notificar incidencias.
+##### R.I.04. Cliente
+Como cliente quiero registrarme en la base de datos, que se me asigne un bonobus para realizar viajes en los autobuses.
+##### R.I.05. Incidencia
+Como conductor quiero registrar notificar incidencias con su fecha y hora, su motivo y su estado, que puede ser enviada, en proceso, solucionada. Además, como administrador quiero poder gestionar estas incidencias.
+##### R.I.06. Bus
+Como administrador quiero registrar los autobuses en la base de datos con su matrícula, su fecha de matriculación, la fecha de la próxima itv, y la capacidad restante, que se inicializará con la capacidad total del autobús, restará en 1 cada vez que un cliente suba en él y subirá en 1 cada vez que un cliente baje de él; para asignarle conductores, lineas de buses y paradas en estas líneas. 
+##### R.I.07. Linea Bus
+Como usuario quiero poder tener las líneas de los autobuses con su número, un booleano para saber si es de idayvuelta o es circular, la parada de inicio y la parada de fin, para asignarle las paradas y los autobuses que la recorran.
+##### R.I.08. Paradas
+Como usuario quiero poder ver las paradas disponibles con su nombre, su calle y su código para que los buses puedan ir a ellas.
+##### R.I.09. Parada Línea
+Como usuario quiero poder ver las paradas pertenecientes a la línea con su número de parada, para saber las paradas pertenecientes a cada línea de bus.
+##### R.I.10. Parada Bus
+Como usuario quiero poder saber la parada por la que pasa un bus, la hora de llegada y la hora de salida para poder ver donde se encuentra el autobús.
+##### R.I.11. Atención al cliente
+Como cliente quiero poder acceder a la atención al cliente, indicando la fechayhora, el estado que puede ser en espera, procesando o finalizada y el motivo para que el administrador la gestione y la solucione cuanto antes.
+##### R.I.12. Viaje
+Como cliente quiero poder registrar mis viajes, con la fecha y hora de inicio, la fecha y hora de fin, la parada inicio y la parada fin, para poder realizar los pagos correspondientes, y para poder actualizar la capacidad del bus.
+##### R.I.13. Pagos
+Como cliente quiero poder registrar mis pagos, con la cantidad correspondiente que por defecto será 0.5€ y si es o no trasbordo, para poder gestiarlos.
+##### R.I.14. Bonobus
+Como cliente quiero saber si mi pago se ha realizado con bonobus, así como el saldo restante, si es o no ilimitado y si está vinculado a NFT, para poder gestionar mi dinero.
+##### R.I.15. Efectivo
+Como cliente quiero saber si el pago ha sido realizado en efectivo para así organizar mi dinero.
+##### R.I.16. Tarjeta
+Como cliente quiero saber si el pago ha sido realizado por tarjeta bancaria para organizar mi dinero.
 #### 4.1.2. Reglas de negocio
 
 ##### RN.01. Saldo suficiente: 
