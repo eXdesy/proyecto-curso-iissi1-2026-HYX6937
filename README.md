@@ -51,6 +51,26 @@ Como usuario del transporte público, quiero utilizar mi bonobús desde el telé
 
 Como responsable de la gestión del transporte, quiero disponer de información actualizada sobre la ubicación y la ocupación de los autobuses, para mejorar el seguimiento del servicio y la información proporcionada a los pasajeros.
 
+#### R.G.05. Centralizar la gestión de los diferentes perfiles de usuario
+
+Como administrador del sistema, quiero disponer de un registro centralizado que diferencie entre clientes, conductores y administradores, para poder gestionar los accesos, asignar contratos a los conductores y mantener la seguridad de la plataforma.
+
+#### R.G.06. Administrar el histórico de incidencias y soporte
+
+Como administrador del sistema, quiero recibir y almacenar todas las incidencias reportadas por los conductores y las peticiones de atención al cliente, para poder hacer un seguimiento de su estado hasta su completa resolución.
+
+#### R.G.07. Registrar el historial completo de viajes y transacciones
+
+Como cliente, quiero que el sistema guarde un registro detallado de mis viajes y del método de pago utilizado (bonobús, tarjeta o efectivo), para poder llevar un control personal de mis gastos y mis rutas habituales.
+
+#### R.G.08. Supervisar el estado legal y técnico de la flota
+
+Como responsable de la gestión del transporte, quiero mantener un inventario actualizado de los autobuses, incluyendo su matrícula, fecha de matriculación y fecha de la próxima ITV, para garantizar que todos los vehículos que operan cumplen con la normativa vigente.
+
+#### R.G.09. Definir y mantener la topología de la red de transporte
+
+Como administrador del sistema, quiero gestionar las líneas de autobuses operativas y el conjunto ordenado de paradas que las componen, para poder estructurar las rutas de la ciudad y permitir que los pasajeros busquen dónde iniciar o finalizar su trayecto.
+
 ### 3.2. Usuarios del sistema
 
 - Pasajero: consulta las líneas, las paradas, la ubicación y los tiempos estimados de llegada de los autobuses. También consulta su ocupación, gestiona su bonobús virtual y valida sus viajes mediante NFC.
