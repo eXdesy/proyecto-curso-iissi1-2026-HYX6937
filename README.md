@@ -387,15 +387,49 @@ El sistema debe garantizar que las operaciones de validación y descuento de sal
 
 - Matriz de trazabilidad entre los elementos del modelo conceptual y los requisitos.
 
-|       | EntidadX   | AsociaciónX  | RestricciónX  | Entidad2 ...   | 
-|:------|:-----------|:-----------|:-----------|:-----------|
-| RI-1  | X          | X          | X          | X          |
-| RI-2  |            | X          |            | X          |
-| RF-1  |            | X          |            | X          |
-| RF-2  | X          |            | X          | X          |
-| RN-1  |            | X          |            |            |
-| RN-2  | X          | X          | X          |            |
-| ...   |            |            |            |            |
+| Requisitos | Entidad(es) implicada(s) | Asociación(es) | Restricción(es) |
+|:---|:---|:---|:---|
+| **R.I.01** | `Usuario` | | Atributos de Usuario obligatorios |
+| **R.I.02** | `Admin`, `Usuario`, `Incidencia` | `gestiona` (Admin-Usuario), `gestiona` (Admin-Incidencia)| `{Completa, disjunta}` (Usuarios) |
+| **R.I.03** | `Conductor`, `Bus` | `conduce` (Conductor-Bus) | `{Completa, disjunta}` (Usuarios) |
+| **R.I.04** | `Cliente`, `Bonobus` | `tiene` (Cliente-Bonobus) | `{Completa, disjunta}` (Usuarios) |
+| **R.I.05** | `Incidencia`, `Conductor` | `notifica` (Conductor-Incidencia) | `estado` (enviada, en proceso, solucionada) |
+| **R.I.06** | `Bus`, `Linea bus` | `tiene` (Linea bus-Bus) | `capacidadrestante >= 0` |
+| **R.I.07** | `Linea bus`, `ParadaLinea` | `tiene` (Linea bus-Parada) | |
+| **R.I.08** | `Parada` | | |
+| **R.I.09**| `ParadaLinea`, `Linea bus`, `Parada`| Asociaciones con tabla intermedia | |
+| **R.I.10** | `ParadaBus`, `Bus`, `Parada` | Asociaciones con tabla intermedia | |
+| **R.I.11** | `Atencion cliente`, `Cliente`, `Admin`| `tiene` (Cliente-Atencion), `gestiona` (Admin) | |
+| **R.I.12** | `Viaje`, `Cliente` | `realiza` (Cliente-Viaje) | |
+| **R.I.13** | `Pagos`, `Viaje` | `hace` (Viaje-Pagos) | `cantidad=0.5` |
+| **R.I.14** | `Bonobus`, `Pagos` | | `{Completa, disjunta}` (Pagos) |
+| **R.I.15** | `Efectivo`, `Pagos` | | `{Completa, disjunta}` (Pagos) |
+| **R.I.16** | `Tarjeta`, `Pagos` | | `{Completa, disjunta}` (Pagos) |
+| **R.F.01** | `Bus`, `ParadaBus` | | |
+| **R.F.02** | `Bus` | | Lectura de `capacidadrestante` |
+| **R.F.03** | `Bus` | | `capacidadrestante <= total` |
+| **R.F.04**| `Bus`, `Cliente` | `sube o baja` (Cliente-Bus) | Actualización de aforo |
+| **R.F.05**| `Linea bus`, `ParadaLinea` | `tiene` (Linea bus-Parada) | Orden numérico estricto |
+| **R.F.06** | `Parada`, `Bus` | | |
+| **R.F.07** | `Pagos`, `Viaje` | `hace` (Viaje-Pagos) | `{Completa, disjunta}` (Pagos) |
+| **R.F.08** | `Bonobus` | | |
+| **R.F.09** | `Viaje`, `Pagos` | `hace` (Viaje-Pagos) | `trasbordo(0..1)` |
+| **R.F.10**| `Bus`, `Incidencia` | `notifica` (Conductor-Incidencia) | |
+| **R.F.12** | `Bonobus` | | `saldo` acumulable |
+| **R.F.16**| `Viaje`, `Parada` | `realiza` (Cliente-Viaje) | Selección de `paradafin` |
+| **R.F.17** | `Conductor`, `Incidencia` | `notifica` (Conductor-Incidencia) | |
+| **R.F.18** | `Conductor`, `Incidencia` | `notifica` (Conductor-Incidencia) | |
+| **R.N.01** | `Bonobus` | | `saldo >= 0.5` |
+| **R.N.02**| `Bus` | | `capacidadrestante = 0` |
+| **R.N.03**| `Bonobus` | | `saldo <= 50` |
+| **R.N.04**| `Bus` | | `capacidadrestante >= 0` |
+| **R.N.05** | `Bonobus`, `Viaje` | `realiza` (Cliente-Viaje) | Límite temporal de validaciones |
+| **R.N.06**| `Viaje`, `Pagos` | `hace` (Viaje-Pagos) | Correspondencia de billetes |
+| **R.N.07** | `Viaje` | `realiza` (Cliente-Viaje) | Margen < 1 hora en `fechahorainicio` |
+| **R.N.08** | `Pagos` | | `cantidad=0.5` |
+| **R.N.09** | `Viaje`, `Parada` | `realiza` (Cliente-Viaje) | Validación activa requerida |
+| **R.N.10**| `Viaje`, `Linea bus` | | Distinta línea para trasbordo |
+| **R.N.11**| `Bonobus` | | Recarga >= 5.00 |
 
 -- fin entregable 2 --
 
