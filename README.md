@@ -636,7 +636,7 @@ El administrador puede consultar posteriormente la incidencia y actualizar su es
 
 ### 7.1. Diagramas de clases UML
 
-![Diagrama UML](/img/Diagrama UML.png)
+![Diagrama UML](/img/DiagramaUML.png)
 
 ### 7.2. Escenarios de prueba
 
@@ -656,7 +656,7 @@ Un nuevo usuario accede a SmartBus y realiza su registro introduciendo su nombre
 
 El cliente queda registrado correctamente y existe una asociación entre el objeto Cliente y su correspondiente Bonobús. El sistema permite identificar qué bonobús pertenece al usuario.
 
-![title EP-01](/img/title EP-01.png)
+![title EP-01](/img/titleEP-01.png)
 
 #### EP-02. Consulta de las paradas de una línea
 
@@ -672,7 +672,7 @@ Cuando el pasajero consulta la línea, el sistema recupera las paradas y las mue
 
 La aplicación muestra las tres paradas correctamente ordenadas, permitiendo identificar el recorrido completo de la línea.
 
-![title EP-02](/img/title EP-02.png)
+![title EP-02](/img/titleEP-02.png)
 
 #### EP-03. Consulta de la ubicación y tiempo estimado de llegada
 
@@ -690,7 +690,7 @@ Si el tiempo estimado para recorrer cada tramo pendiente es de tres minutos, el 
 
 La aplicación muestra la Parada B como última parada registrada del autobús y presenta una estimación de llegada de seis minutos a la Parada D.
 
-![title EP-03](/img/title EP-03.png)
+![title EP-03](/img/titleEP-03.png)
 
 #### EP-04. Actualización de la ocupación del autobús
 
@@ -708,7 +708,7 @@ La ocupación resultante es de 22 pasajeros, por lo que quedan 18 plazas disponi
 
 El sistema actualiza la ocupación del autobús a 22 pasajeros y su capacidad restante a 18 plazas. Esta información queda disponible para los usuarios de las siguientes paradas.
 
-![title EP-04](/img/title EP-04.png)
+![title EP-04](/img/titleEP-04.png)
 
 #### EP-05. Autobús que alcanza su capacidad máxima
 
@@ -726,7 +726,7 @@ Como consecuencia, el autobús pasa al estado "Completo", impidiendo que se emit
 
 El autobús aparece identificado como completo y su capacidad restante es de cero plazas. La aplicación oculta el tiempo de llegada de ese vehículo para los usuarios de las siguientes paradas, según la regla de negocio definida.
 
-![title EP-05](/img/title EP-05.png)
+![title EP-05](/img/titleEP-05.png)
 
 #### EP-06. Validación de un viaje con bonobús virtual
 
@@ -746,7 +746,7 @@ También se comprueba el caso de un cliente cuyo bonobús dispone únicamente de
 
 Cuando existe saldo suficiente, se registra el viaje, se genera el pago correspondiente y se actualiza el saldo del bonobús. Cuando el saldo es insuficiente, se rechaza la operación sin descontar dinero ni registrar un viaje válido.
 
-![title EP-06](/img/title EP-06.png)
+![title EP-06](/img/titleEP-06.png)
 
 #### EP-07. Recarga del saldo del bonobús virtual
 
@@ -768,7 +768,7 @@ También se comprueba que una recarga inferior a 5 € sea rechazada.
 
 El sistema permite las recargas que cumplen las restricciones y rechaza aquellas que no respetan el importe mínimo o el saldo máximo establecido.
 
-![title EP-07](/img/title EP-07.png)
+![title EP-07](/img/titleEP-07.png)
 
 #### EP-08. Aplicación del descuento por transbordo
 
@@ -788,7 +788,7 @@ Se comprueba también que el descuento no se aplique cuando el segundo viaje se 
 
 El segundo pago queda identificado como transbordo y se aplica el descuento cuando se cumplen las condiciones. En caso contrario, se utiliza la tarifa ordinaria.
 
-![title EP-08](/img/title EP-08.png)
+![title EP-08](/img/titleEP-08.png)
 
 #### EP-09. Solicitud de parada de bajada
 
@@ -812,7 +812,7 @@ El sistema acepta la solicitud e informa al conductor de que debe detenerse en l
 
 Si el cliente no tiene una validación activa en ese autobús, la aplicación rechaza la solicitud.
 
-![title EP-09](/img/title EP-09.png)
+![title EP-09](/img/titleEP-09.png)
 
 #### EP-10. Notificación de avería de un autobús
 
@@ -836,7 +836,7 @@ La incidencia queda registrada con estado inicial "Enviada" y asociada al conduc
 
 El administrador puede consultar posteriormente la incidencia y actualizar su estado a "En proceso" o "Solucionada".
 
-![title EP-10](/img/title EP-10.png)
+![title EP-10](/img/titleEP-10.png)
 
 ## 8. Matrices de trazabilidad
 
