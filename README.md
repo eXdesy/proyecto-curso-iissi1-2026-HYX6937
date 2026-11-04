@@ -636,11 +636,207 @@ El administrador puede consultar posteriormente la incidencia y actualizar su es
 
 ### 7.1. Diagramas de clases UML
 
-- con restricciones.
+![Diagrama UML](/img/Diagrama UML.png)
 
 ### 7.2. Escenarios de prueba
 
-- con descripción textual y diagrama de objetos UML.
+En este apartado se representan los escenarios de prueba del sistema SmartBus mediante diagramas de objetos UML.
+
+Cada escenario incluye una descripción textual de la situación planteada, el resultado esperado y un diagrama de objetos que representa las instancias de las clases implicadas y sus relaciones.
+
+#### EP-01. Registro de un cliente y asignación de bonobús
+
+**Historia relacionada:** HU-01.
+
+**Descripción textual:**
+
+Un nuevo usuario accede a SmartBus y realiza su registro introduciendo su nombre, apellidos, correo electrónico y contraseña. El sistema crea un objeto de tipo Cliente, almacena sus datos personales y registra su fecha de alta. A continuación, se le asigna un bonobús virtual que queda asociado a su cuenta.
+
+**Resultado esperado:**
+
+El cliente queda registrado correctamente y existe una asociación entre el objeto Cliente y su correspondiente Bonobús. El sistema permite identificar qué bonobús pertenece al usuario.
+
+![title EP-01](/img/title EP-01.png)
+
+#### EP-02. Consulta de las paradas de una línea
+
+**Historia relacionada:** HU-02.
+
+**Descripción textual:**
+
+Un pasajero accede a la aplicación y selecciona una línea de autobús que tiene tres paradas registradas: Parada A, Parada B y Parada C. Estas paradas están asociadas a la línea mediante sus correspondientes registros de ParadaLinea, indicando el orden que ocupan dentro del recorrido.
+
+Cuando el pasajero consulta la línea, el sistema recupera las paradas y las muestra siguiendo el orden establecido.
+
+**Resultado esperado:**
+
+La aplicación muestra las tres paradas correctamente ordenadas, permitiendo identificar el recorrido completo de la línea.
+
+![title EP-02](/img/title EP-02.png)
+
+#### EP-03. Consulta de la ubicación y tiempo estimado de llegada
+
+**Historia relacionada:** HU-03.
+
+**Descripción textual:**
+
+Un pasajero se encuentra esperando en la Parada D de una línea cuyo recorrido está formado por las paradas A, B, C y D.
+
+Un autobús ha completado su paso por la Parada B, por lo que el sistema registra esta última parada como su ubicación conocida.
+
+Si el tiempo estimado para recorrer cada tramo pendiente es de tres minutos, el sistema calcula que el autobús tardará aproximadamente seis minutos en llegar a la Parada D.
+
+**Resultado esperado:**
+
+La aplicación muestra la Parada B como última parada registrada del autobús y presenta una estimación de llegada de seis minutos a la Parada D.
+
+![title EP-03](/img/title EP-03.png)
+
+#### EP-04. Actualización de la ocupación del autobús
+
+**Historia relacionada:** HU-04.
+
+**Descripción textual:**
+
+Un autobús tiene una capacidad máxima de 40 pasajeros y actualmente transporta a 20 personas.
+
+Al llegar a una parada, seis pasajeros suben al vehículo y cuatro se bajan. Tras el cierre de puertas, el sistema registra las nuevas entradas y salidas y actualiza el número de viajeros a bordo.
+
+La ocupación resultante es de 22 pasajeros, por lo que quedan 18 plazas disponibles.
+
+**Resultado esperado:**
+
+El sistema actualiza la ocupación del autobús a 22 pasajeros y su capacidad restante a 18 plazas. Esta información queda disponible para los usuarios de las siguientes paradas.
+
+![title EP-04](/img/title EP-04.png)
+
+#### EP-05. Autobús que alcanza su capacidad máxima
+
+**Historia relacionada:** HU-05.
+
+**Descripción textual:**
+
+Un autobús con capacidad máxima para 40 pasajeros transporta actualmente a 39 personas.
+
+En la siguiente parada, un nuevo pasajero valida correctamente su viaje y accede al vehículo. El sistema incrementa el número de pasajeros a 40, alcanzando así su capacidad máxima.
+
+Como consecuencia, el autobús pasa al estado "Completo", impidiendo que se emitan nuevos billetes virtuales para ese vehículo mientras permanezca lleno.
+
+**Resultado esperado:**
+
+El autobús aparece identificado como completo y su capacidad restante es de cero plazas. La aplicación oculta el tiempo de llegada de ese vehículo para los usuarios de las siguientes paradas, según la regla de negocio definida.
+
+![title EP-05](/img/title EP-05.png)
+
+#### EP-06. Validación de un viaje con bonobús virtual
+
+**Historia relacionada:** HU-06.
+
+**Descripción textual:**
+
+Un cliente tiene un bonobús virtual con un saldo disponible de 1,50 € y desea subir a un autobús.
+
+Al acercar su teléfono móvil al lector NFC, el sistema comprueba que el bonobús dispone de saldo suficiente para pagar la tarifa ordinaria de 0,50 €.
+
+La validación se autoriza, se registra el viaje y se descuenta el importe correspondiente, dejando un saldo de 1,00 €.
+
+También se comprueba el caso de un cliente cuyo bonobús dispone únicamente de 0,30 €. En esta situación, el sistema debe rechazar la validación porque el saldo es insuficiente.
+
+**Resultado esperado:**
+
+Cuando existe saldo suficiente, se registra el viaje, se genera el pago correspondiente y se actualiza el saldo del bonobús. Cuando el saldo es insuficiente, se rechaza la operación sin descontar dinero ni registrar un viaje válido.
+
+![title EP-06](/img/title EP-06.png)
+
+#### EP-07. Recarga del saldo del bonobús virtual
+
+**Historia relacionada:** HU-07.
+
+**Descripción textual:**
+
+Un cliente dispone de un bonobús virtual con un saldo de 44 € y solicita una recarga de 5 € desde la aplicación.
+
+El sistema comprueba que el importe cumple el mínimo de recarga establecido y que el saldo resultante no supera el máximo permitido de 50 €.
+
+La operación se autoriza y el saldo del bonobús pasa a ser de 49 €.
+
+Posteriormente, se prueba una recarga de 5 € sobre un bonobús que ya dispone de 48 €. En este caso, la operación debe rechazarse porque el saldo resultante superaría el máximo permitido.
+
+También se comprueba que una recarga inferior a 5 € sea rechazada.
+
+**Resultado esperado:**
+
+El sistema permite las recargas que cumplen las restricciones y rechaza aquellas que no respetan el importe mínimo o el saldo máximo establecido.
+
+![title EP-07](/img/title EP-07.png)
+
+#### EP-08. Aplicación del descuento por transbordo
+
+**Historia relacionada:** HU-08.
+
+**Descripción textual:**
+
+Un cliente realiza un viaje en la Línea 1 utilizando su bonobús virtual. El sistema registra la fecha y hora de validación y el pago correspondiente.
+
+Cuarenta minutos después, el mismo cliente sube a un autobús de la Línea 2 y vuelve a utilizar su bonobús.
+
+Al identificar que se trata de una línea diferente y que no ha transcurrido una hora desde la primera validación, el sistema reconoce el segundo viaje como transbordo y aplica el descuento correspondiente.
+
+Se comprueba también que el descuento no se aplique cuando el segundo viaje se realiza en la misma línea o cuando han transcurrido 60 minutos o más.
+
+**Resultado esperado:**
+
+El segundo pago queda identificado como transbordo y se aplica el descuento cuando se cumplen las condiciones. En caso contrario, se utiliza la tarifa ordinaria.
+
+![title EP-08](/img/title EP-08.png)
+
+#### EP-09. Solicitud de parada de bajada
+
+**Historia relacionada:** HU-09.
+
+**Descripción textual:**
+
+Un pasajero se encuentra viajando en un autobús de la Línea 5 y tiene una validación activa asociada a dicho vehículo.
+
+El autobús acaba de superar la Parada B y la siguiente parada de su recorrido es la Parada C.
+
+El pasajero accede a la aplicación y solicita bajarse en la Parada C.
+
+El sistema comprueba que el cliente tiene un viaje activo en ese autobús y que la parada solicitada es posterior a la última parada registrada.
+
+Una vez verificados estos datos, la solicitud se comunica al conductor.
+
+**Resultado esperado:**
+
+El sistema acepta la solicitud e informa al conductor de que debe detenerse en la Parada C.
+
+Si el cliente no tiene una validación activa en ese autobús, la aplicación rechaza la solicitud.
+
+![title EP-09](/img/title EP-09.png)
+
+#### EP-10. Notificación de avería de un autobús
+
+**Historia relacionada:** HU-10.
+
+**Descripción textual:**
+
+Un conductor está realizando un servicio en un autobús asignado a una línea determinada.
+
+Durante el recorrido, el vehículo sufre una avería que le impide continuar. El conductor accede al sistema y selecciona la opción de notificar una avería crítica.
+
+El sistema registra una incidencia vinculada al conductor, almacenando la fecha, la hora y el motivo de la avería.
+
+A continuación, el autobús queda marcado como inactivo en su última parada registrada.
+
+Las previsiones de llegada de ese vehículo desaparecen de las paradas posteriores y el contador de ocupación del sistema se actualiza a cero, según lo establecido en los requisitos.
+
+**Resultado esperado:**
+
+La incidencia queda registrada con estado inicial "Enviada" y asociada al conductor. El autobús cambia su estado a "Inactivo" y deja de aparecer como un vehículo disponible para continuar el recorrido.
+
+El administrador puede consultar posteriormente la incidencia y actualizar su estado a "En proceso" o "Solucionada".
+
+![title EP-10](/img/title EP-10.png)
 
 ## 8. Matrices de trazabilidad
 
